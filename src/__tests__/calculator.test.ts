@@ -24,4 +24,31 @@ let dataset = [
   { x: 81, y: 227, method: "divide" },
 ];
 
-describe("Calculator", () => {});
+
+function selectOp(x: number, y: number, method: string, ) {
+  switch (method){ //does the assertions
+    case 'add':
+      expect(calculator.add(x, y)).toBe(x+y)
+      break;
+    case 'subtract':
+      expect(calculator.subtract(x, y)).toBe(x-y)
+      break;
+    case 'multiply':
+      expect(calculator.multiply(x, y)).toBe(x*y)
+      break;
+    case 'divide':
+      expect(calculator.divide(x, y)).toBe(x/y) //
+      break;
+    default:
+      break;
+  }
+}
+
+
+describe("Calculator", () => {
+  dataset.forEach(item => {
+    test(`${item.method} ${item.x} and ${item.y}`, () => { // forgot to add () => before {}
+      selectOp(item.x, item.y, item.method); // figure out how to pass the params in
+    });
+  });
+});
