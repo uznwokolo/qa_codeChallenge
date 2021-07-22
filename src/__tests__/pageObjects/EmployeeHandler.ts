@@ -22,6 +22,8 @@ export class EmployeeHandler {
   saveButton: By = By.id("saveBtn");
   cancelButton: By = By.name("cancel");
   errorCard: By = By.css(".errorCard");
+  appTitle: By = By.className("titleText");
+  footerText: By = By.className("footer");
   homePage: string =
     "https://devmountain-qa.github.io/employee-manager/1.2_Version/index.html";
 
@@ -130,6 +132,22 @@ export class EmployeeHandler {
    */
   async getErrorMessage(): Promise<string> {
     return (await this.driver.findElement(this.errorCard)).getText();
+  }
+
+  /**
+   * Get the displayed app title.
+   * @returns {Promise<string>} the displayed app title
+   */
+   async getAppTitle(): Promise<string> {
+    return (await this.driver.findElement(this.appTitle)).getText();
+  }
+
+  /**
+   * Get the displayed footer text.
+   * @returns {Promise<string>} the displayed footer text
+   */
+   async getFooterText(): Promise<string> {
+    return (await this.driver.findElement(this.footerText)).getText();
   }
 
   /**
